@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background: #0a0e27;
+    color: #fff;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+
+.content {
+    text-align: center;
+    z-index: 10;
+    max-width: 800px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tagline {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+    background: linear-gradient(45deg, #00ffff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    margin-top: 30px;
+}
+
+.description {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: rgba(255, 255, 255, 0.9);
+    animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.countdown-value {
+    font-size: 3rem;
+    font-weight: 700;
+    background: rgba(0, 255, 255, 0.05);
+    padding: 20px 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    color: #00ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.countdown-value:hover {
+    transform: scale(1.05);
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.5);
+}
+
+.countdown-label {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.launch-date {
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease-out 0.8s backwards;
+}
+
+.launch-date p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.launch-date strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.notify-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 1s backwards;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.email-input {
+    padding: 15px 25px;
+    font-size: 1rem;
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 50px;
+    background: rgba(0, 255, 255, 0.05);
+    color: #fff;
+    outline: none;
+    min-width: 300px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.email-input::placeholder {
+    color: rgba(0, 255, 255, 0.5);
+}
+
+.email-input:focus {
+    border-color: rgba(0, 255, 255, 0.6);
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.notify-btn {
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    border-radius: 50px;
+    background: rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.notify-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    border-color: rgba(0, 255, 255, 0.8);
+}
+
+.notify-btn:active {
+    transform: translateY(0);
+}
+
+/* Particles */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(0, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: float 15s infinite;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background: rgba(10, 14, 39, 0.95);
+    color: #00ffff;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tagline {
+        font-size: 1.8rem;
+    }
+    
+    .countdown {
+        gap: 15px;
+    }
+    
+    .countdown-item {
+        min-width: 70px;
+    }
+    
+    .countdown-value {
+        font-size: 2rem;
+        padding: 15px 20px;
+    }
+    
+    .email-input {
+        min-width: 250px;
+    }
+    
+    .notify-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .tagline {
+        font-size: 1.3rem;
+    }
+    
+    .countdown-value {
+        font-size: 1.5rem;
+        padding: 10px 15px;
+    }
+    
+    .email-input {
+        min-width: 200px;
+    }
+}

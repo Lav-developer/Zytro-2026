@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2 class="tagline">Something Amazing is Coming</h2>
+            <p class="description">We're working on something extraordinary. Stay tuned for the big reveal!</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            
+            <div class="launch-date">
+                <p>Launching in <strong>February 2026</strong></p>
+            </div>
+            
+            <form name="coming-soon" method="POST" data-netlify="true" class="notify-section" onsubmit="handleSubmit(event)" netlify>
+                <input type="hidden" name="form-name" value="coming-soon">
+                <input type="email" name="email" id="emailInput" placeholder="Enter your email" class="email-input" required>
+                <button type="submit" class="notify-btn">Notify Me</button>
+            </form>
+        </div>
+        
+        <div class="particles" id="particles"></div>
+    </div>
+    
+    <div id="notification" class="notification"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
