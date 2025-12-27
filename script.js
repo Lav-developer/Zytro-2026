@@ -50,7 +50,7 @@ function handleSubmit(event) {
         body: new URLSearchParams(new FormData(form)).toString()
     })
     .then(() => {
-        showNotification('Thank you! We\'ll notify you when we launch! 🚀', 'success');
+        showNotification('Thank you! We\'ll notify on launch! 🚀', 'success');
         emailInput.value = '';
     })
     .catch((error) => {
