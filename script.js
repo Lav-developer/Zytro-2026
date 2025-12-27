@@ -1,6 +1,41 @@
 // Set the launch date to February 1, 2026
 const launchDate = new Date('February 1, 2026 00:00:00').getTime();
 
+// Lightweight tick sound (square blip) with autoplay attempt and user-interaction fallback
+let audioCtx = null;
+let tickEnabled = false;
+
+async function initTickAudio() {
+    if (tickEnabled) return;
+    try {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        await audioCtx.resume();
+        tickEnabled = true;
+    } catch (err) {
+        // If audio context fails (likely autoplay restrictions), we wait for user action
+        tickEnabled = false;
+    }
+}
+
+function playTick() {
+    if (!tickEnabled || !audioCtx) return;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'square';
+    osc.frequency.value = 880;
+
+    const now = audioCtx.currentTime;
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.25, now + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
+
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + 0.1);
+}
+
 // Update countdown every second
 const countdownTimer = setInterval(function() {
     const now = new Date().getTime();
@@ -17,6 +52,9 @@ const countdownTimer = setInterval(function() {
     document.getElementById('hours').textContent = String(hours).padStart(2, '0');
     document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
     document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+    // Soft tick once per second after user primes audio
+    playTick();
     
     // If countdown is finished
     if (distance < 0) {
@@ -127,6 +165,16 @@ function createParticles() {
 
 // Initialize particles on load
 window.addEventListener('load', createParticles);
+
+// Attempt to start ticking as soon as the page loads (may be blocked by autoplay policies)
+window.addEventListener('load', () => {
+    initTickAudio();
+});
+
+// Reliable fallback: prime audio on first user interaction
+['pointerdown', 'keydown'].forEach(eventName => {
+    window.addEventListener(eventName, initTickAudio, { once: true });
+});
 
 // Add smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
