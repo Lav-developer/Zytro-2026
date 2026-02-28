@@ -1,5 +1,5 @@
 // Set the launch date to February 1, 2026
-const launchDate = new Date('February 1, 2026 00:00:00').getTime();
+const launchDate = new Date('April, 2026 00:00:00').getTime();
 
 // Lightweight tick sound (square blip) with autoplay attempt and user-interaction fallback
 let audioCtx = null;
